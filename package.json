@@ -93,6 +93,11 @@
     "web-vitals": "^2.1.4",
     "yup": "^0.32.11"
   },
+  "engines": {
+    "npm": "please-use-yarn",
+    "yarn": ">= 1.19.1"
+  },
+  "packageManager": "yarn@3.2.4",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build --max_old_space_size=8000 build",
