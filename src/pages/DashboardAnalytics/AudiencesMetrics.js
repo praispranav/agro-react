@@ -33,7 +33,7 @@ const AudiencesMetrics = () => {
             <Col xl={6}>
                 <Card>
                     <CardHeader className="border-0 align-items-center d-flex">
-                        <h4 className="card-title mb-0 flex-grow-1">Audiences Metrics</h4>
+                        <h4 className="card-title mb-0 flex-grow-1">Visitors Metrics</h4>
                         <div className="d-flex gap-1">
                             <button type="button" className="btn btn-soft-secondary btn-sm" onClick={() => { onChangeChartPeriod("all"); }}>
                                 ALL
@@ -62,7 +62,7 @@ const AudiencesMetrics = () => {
                                     </span>
                                         <span className="text-success ms-1 fs-12">49%<i className="ri-arrow-right-up-line ms-1 align-middle"></i></span>
                                     </h5>
-                                    <p className="text-muted mb-0">Avg. Session</p>
+                                    <p className="text-muted mb-0">Avg. Visitors</p>
                                 </div>
                             </Col>
                             <Col xs={6} sm={4}>
@@ -77,7 +77,7 @@ const AudiencesMetrics = () => {
                                     </span>
                                         <span className="text-success ms-1 fs-12">60%<i className="ri-arrow-right-up-line ms-1 align-middle"></i></span>
                                     </h5>
-                                    <p className="text-muted mb-0">Conversion Rate</p>
+                                    <p className="text-muted mb-0">Billable Rate</p>
                                 </div>
                             </Col>
                             <Col xs={6} sm={4}>

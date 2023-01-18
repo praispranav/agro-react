@@ -32,7 +32,7 @@ const AudiencesSessions = () => {
             <Col xl={6}>
                 <Card className="card-height-100">
                     <CardHeader className="align-items-center d-flex">
-                        <h4 className="card-title mb-0 flex-grow-1">Audiences Sessions by Country</h4>
+                        <h4 className="card-title mb-0 flex-grow-1">Hangup Ratios</h4>
                         <div className="flex-shrink-0">
                             <UncontrolledDropdown className="card-header-dropdown">
                                 <DropdownToggle tag="a" className="text-reset dropdown-btn" role="button">

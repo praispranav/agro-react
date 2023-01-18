@@ -20,6 +20,7 @@ import logoLight from "../../assets/images/logo-light.png";
 import ParticlesAuth from "../AuthenticationInner/ParticlesAuth";
 
 import withRouter from "../../Components/Common/withRouter";
+import logoWhite from "../../assets/wecall-images/logoWhite.svg";
 
 const ForgetPasswordPage = props => {
   const dispatch = useDispatch();
@@ -44,10 +45,10 @@ const ForgetPasswordPage = props => {
     forgetSuccessMsg: state.ForgetPassword.forgetSuccessMsg,
   }));
 
-document.title ="Reset Password | Velzon - React Admin & Dashboard Template";
+document.title ="Reset Password | WeCall";
   return (
     <ParticlesAuth>
-      <div className="auth-page-content">
+      <div className="auth-page-content mt-5">
         
         <Container>
           <Row>
@@ -55,10 +56,9 @@ document.title ="Reset Password | Velzon - React Admin & Dashboard Template";
               <div className="text-center mt-sm-5 mb-4 text-white-50">
                 <div>
                   <Link to="/" className="d-inline-block auth-logo">
-                    <img src={logoLight} alt="" height="20" />
+                    <img src={logoWhite} alt="" height="20" />
                   </Link>
                 </div>
-                <p className="mt-3 fs-15 fw-medium">Premium Admin & Dashboard Template</p>
               </div>
             </Col>
           </Row>

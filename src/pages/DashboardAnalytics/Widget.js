@@ -14,7 +14,7 @@ const Widget = () => {
                         <CardBody>
                             <div className="d-flex justify-content-between">
                                 <div>
-                                    <p className="fw-medium text-muted mb-0">Users</p>
+                                    <p className="fw-medium text-muted mb-0">Visitors</p>
                                     <h2 className="mt-4 ff-secondary fw-semibold">
                                         <span className="counter-value">
                                             <CountUp
@@ -48,7 +48,7 @@ const Widget = () => {
                         <CardBody>
                             <div className="d-flex justify-content-between">
                                 <div>
-                                    <p className="fw-medium text-muted mb-0">Sessions</p>
+                                    <p className="fw-medium text-muted mb-0">Call (mins)</p>
                                     <h2 className="mt-4 ff-secondary fw-semibold">
                                         <span className="counter-value" data-target="97.66">
                                             <CountUp
@@ -84,24 +84,18 @@ const Widget = () => {
                         <CardBody>
                             <div className="d-flex justify-content-between">
                                 <div>
-                                    <p className="fw-medium text-muted mb-0">Avg. Visit Duration</p>
+                                    <p className="fw-medium text-muted mb-0">Converted Calls</p>
                                     <h2 className="mt-4 ff-secondary fw-semibold">
-                                        <span className="counter-value" data-target="3">
+                                        <span className="counter-value" data-target="93.48">
                                             <CountUp
                                                 start={0}
-                                                end={3}
+                                                end={93.48}
+                                                decimals={2}
                                                 duration={4}
                                             />
-                                        </span>m{" "}
-                                        <span className="counter-value" data-target="40">
-                                            <CountUp
-                                                start={0}
-                                                end={40}
-                                                duration={4}
-                                            />
-                                        </span>sec</h2>
-                                    <p className="mb-0 text-muted"><span className="badge bg-light text-danger mb-0">
-                                        <i className="ri-arrow-down-line align-middle"></i> 0.24 %
+                                        </span>%</h2>
+                                    <p className="mb-0 text-muted"><span className="badge bg-light text-success mb-0">
+                                        <i className="ri-arrow-up-line align-middle"></i> 7.05 %
                                     </span> vs. previous month</p>
                                 </div>
                                 <div>
@@ -124,7 +118,7 @@ const Widget = () => {
                         <CardBody>
                             <div className="d-flex justify-content-between">
                                 <div>
-                                    <p className="fw-medium text-muted mb-0">Bounce Rate</p>
+                                    <p className="fw-medium text-muted mb-0">Billable Calls</p>
                                     <h2 className="mt-4 ff-secondary fw-semibold">
                                         <span className="counter-value" data-target="33.48">
                                             <CountUp

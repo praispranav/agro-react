@@ -11,6 +11,7 @@ import VerticalLayout from "./VerticalLayouts";
 import TwoColumnLayout from "./TwoColumnLayout";
 import { Container } from "reactstrap";
 import HorizontalLayout from "./HorizontalLayout";
+import logoWhite from "../assets/wecall-images/logoWhite.svg"
 
 const Sidebar = ({ layoutType }) => {
 
@@ -43,7 +44,7 @@ const Sidebar = ({ layoutType }) => {
               <img src={logoSm} alt="" height="22" />
             </span>
             <span className="logo-lg">
-              <img src={logoDark} alt="" height="17" />
+              <img src={logoWhite} alt="" height="17" />
             </span>
           </Link>
 
@@ -52,7 +53,7 @@ const Sidebar = ({ layoutType }) => {
               <img src={logoSm} alt="" height="22" />
             </span>
             <span className="logo-lg">
-              <img src={logoLight} alt="" height="17" />
+              <img src={logoWhite} alt="" height="17" />
             </span>
           </Link>
           <button

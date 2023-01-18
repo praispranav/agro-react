@@ -6,7 +6,7 @@ import ParticlesAuth from "../ParticlesAuth";
 
 //import images
 import logoLight from "../../../assets/images/logo-light.png";
-
+import logoWhite from "../../../assets/wecall-images/logoWhite.svg";
 
 const BasicSignIn = () => {
 document.title="Basic SignIn | Velzon - React Admin & Dashboard Template";
@@ -20,7 +20,7 @@ document.title="Basic SignIn | Velzon - React Admin & Dashboard Template";
                                 <div className="text-center mt-sm-5 mb-4 text-white-50">
                                     <div>
                                         <Link to="/" className="d-inline-block auth-logo">
-                                            <img src={logoLight} alt="" height="20" />
+                                            <img src={logoWhite} alt="" height="20" />
                                         </Link>
                                     </div>
                                     <p className="mt-3 fs-15 fw-medium">Premium Admin & Dashboard Template</p>

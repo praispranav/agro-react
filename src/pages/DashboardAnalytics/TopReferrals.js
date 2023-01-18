@@ -11,7 +11,7 @@ const TopReferrals = () => {
             <Col xl={4} md={6}>
                 <Card className="card-height-100">
                     <CardHeader className="align-items-center d-flex">
-                        <h4 className="card-title mb-0 flex-grow-1">Top Referrals Pages</h4>
+                        <h4 className="card-title mb-0 flex-grow-1">Lead Sources</h4>
                         <div className="flex-shrink-0">
                             <button type="button" className="btn btn-soft-primary btn-sm">
                                 Export Report
@@ -23,7 +23,7 @@ const TopReferrals = () => {
 
                         <Row className="align-items-center">
                             <Col xs={6}>
-                                <h6 className="text-muted text-uppercase fw-semibold text-truncate fs-12 mb-3">Total Referrals Page</h6>
+                                <h6 className="text-muted text-uppercase fw-semibold text-truncate fs-12 mb-3">Total Lead Source</h6>
                                 <h4 className="fs- mb-0">725,800</h4>
                                 <p className="mb-0 mt-2 text-muted"><span className="badge badge-soft-success mb-0">
                                     <i className="ri-arrow-up-line align-middle"></i> 15.72 %
@@ -48,7 +48,7 @@ const TopReferrals = () => {
                         <div className="mt-3 pt-2">
                             <div className="d-flex mb-2">
                                 <div className="flex-grow-1">
-                                    <p className="text-truncate text-muted fs-14 mb-0"><i className="mdi mdi-circle align-middle text-primary me-2"></i>www.google.com</p>
+                                    <p className="text-truncate text-muted fs-14 mb-0"><i className="mdi mdi-circle align-middle text-primary me-2"></i>internal1</p>
                                 </div>
                                 <div className="flex-shrink-0">
                                     <p className="mb-0">24.58%</p>
@@ -56,7 +56,7 @@ const TopReferrals = () => {
                             </div>
                             <div className="d-flex mb-2">
                                 <div className="flex-grow-1">
-                                    <p className="text-truncate text-muted fs-14 mb-0"><i className="mdi mdi-circle align-middle text-info me-2"></i>www.youtube.com</p>
+                                    <p className="text-truncate text-muted fs-14 mb-0"><i className="mdi mdi-circle align-middle text-info me-2"></i>internal2</p>
                                 </div>
                                 <div className="flex-shrink-0">
                                     <p className="mb-0">17.51%</p>
@@ -64,7 +64,7 @@ const TopReferrals = () => {
                             </div>
                             <div className="d-flex mb-2">
                                 <div className="flex-grow-1">
-                                    <p className="text-truncate text-muted fs-14 mb-0"><i className="mdi mdi-circle align-middle text-success me-2"></i>www.meta.com</p>
+                                    <p className="text-truncate text-muted fs-14 mb-0"><i className="mdi mdi-circle align-middle text-success me-2"></i>internal3</p>
                                 </div>
                                 <div className="flex-shrink-0">
                                     <p className="mb-0">23.05%</p>
@@ -72,7 +72,7 @@ const TopReferrals = () => {
                             </div>
                             <div className="d-flex mb-2">
                                 <div className="flex-grow-1">
-                                    <p className="text-truncate text-muted fs-14 mb-0"><i className="mdi mdi-circle align-middle text-warning me-2"></i>www.medium.com</p>
+                                    <p className="text-truncate text-muted fs-14 mb-0"><i className="mdi mdi-circle align-middle text-warning me-2"></i>internal4</p>
                                 </div>
                                 <div className="flex-shrink-0">
                                     <p className="mb-0">12.22%</p>

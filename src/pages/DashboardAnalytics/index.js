@@ -11,10 +11,10 @@ import AudiencesSessions from './AudiencesSessions';
 import LiveUsers from './LiveUsers';
 import TopReferrals from './TopReferrals';
 import TopPages from './TopPages';
-
+import Welcome from './Welcome';
 
 const DashboardAnalytics = () => {
-document.title="Analytics | Velzon - React Admin & Dashboard Template";
+document.title="Reporting Analytics | WeCall";
     return (
         <React.Fragment>
             <div className="page-content">
@@ -22,7 +22,7 @@ document.title="Analytics | Velzon - React Admin & Dashboard Template";
                     <BreadCrumb title="Analytics" pageTitle="Dashboards" />
                     <Row>
                         <Col xxl={5}>
-                            <UpgradeAccountNotise />
+                            <Welcome />
                             <Widget />
                         </Col>
                         <LiveUsers />

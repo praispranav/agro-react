@@ -193,7 +193,24 @@ const CountriesCharts = ({ dataColors, series }) => {
             show: false,
         },
         xaxis: {
-            categories: ['India', 'United States', 'China', 'Indonesia', 'Russia', 'Bangladesh', 'Canada', 'Brazil', 'Vietnam', 'UK'],
+            categories: [
+                "Alabama",
+               "Alaska",
+               "A. Samoa",
+               "Arizona",
+               "Arkansas",
+               "California",
+               "Colorado",
+               "Connecticut",
+               "Delaware",
+               "Columbia",
+               "Micronesia",
+               "Florida",
+               "Georgia",
+               "Guam",
+               "Hawaii"
+               ]
+            // ['Arizona', 'United States', 'China', 'Indonesia', 'Russia', 'Bangladesh', 'Canada', 'Brazil', 'Vietnam', 'UK'],
         },
     };
     return (
