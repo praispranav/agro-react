@@ -9,6 +9,8 @@ import {
   Label,
   Row,
   Table,
+  FormGroup,
+  Button,
 } from "reactstrap";
 import PreviewCardHeader from "../../../Components/Common/PreviewCardHeader";
 import { Link } from "react-router-dom";
@@ -174,30 +176,99 @@ const columns = [
 ];
 
 const keys = [
-  "CallDateTime",
-  "Hangup",
-  "CallerId",
-  "InboundCallId",
-  "Publisher",
-  "PublisherId",
-  "Revenue",
-  "Campaign",
-  "Target",
-  "TargetId",
-  "Buyer",
-  "BuyerId",
-  "ConnectedDurationSec",
-  "Duplicate",
-  "Payout",
-  "Dialed",
-  "RecordingUrl",
-  "TelcoCost",
-  "ConversionAdjusted",
-  "PayoutAdjusted",
-  "IsConverted",
-  "IsBillable",
-  "JornayaId",
-  "LeadSource",
+  {
+    value: "Hangup",
+    label: "Hangup",
+  },
+  {
+    value: "CallerId",
+    label: "CallerId",
+  },
+  {
+    value: "InboundCallId",
+    label: "InboundCallId",
+  },
+  {
+    value: "Publisher",
+    label: "Publisher",
+  },
+  {
+    value: "PublisherId",
+    label: "PublisherId",
+  },
+  {
+    value: "Revenue",
+    label: "Revenue",
+  },
+  {
+    value: "Campaign",
+    label: "Campaign",
+  },
+  {
+    value: "Target",
+    label: "Target",
+  },
+  {
+    value: "TargetId",
+    label: "TargetId",
+  },
+  {
+    value: "Buyer",
+    label: "Buyer",
+  },
+  {
+    value: "BuyerId",
+    label: "BuyerId",
+  },
+  {
+    value: "ConnectedDurationSec",
+    label: "ConnectedDurationSec",
+  },
+  {
+    value: "Duplicate",
+    label: "Duplicate",
+  },
+  {
+    value: "Payout",
+    label: "Payout",
+  },
+  {
+    value: "Dialed",
+    label: "Dialed",
+  },
+  {
+    value: "RecordingUrl",
+    label: "RecordingUrl",
+  },
+  {
+    value: "TelcoCost",
+    label: "TelcoCost",
+  },
+  {
+    value: "ConversionAdjusted",
+    label: "ConversionAdjusted",
+  },
+  {
+    value: "PayoutAdjusted",
+    label: "PayoutAdjusted",
+  },
+  {
+    value: "IsConverted",
+    label: "IsConverted",
+  },
+  {
+    value: "IsBillable",
+    label: "IsBillable",
+  },
+  {
+    value: "JornayaId",
+    label: "JornayaId",
+  },
+  {
+    value: "LeadSource",
+    label: "LeadSource",
+  },
+  { value: "CallDateTime", label: "CallDateTime" },
 ];
 
 const SingleOptions = [
@@ -211,6 +282,7 @@ export default function DataTable() {
   const [data, setData] = useState([...defaultData]);
   // const [columns, setColumns] = useState();
   const [selectedMulti, setSelectedOption] = useState([]);
+  const [selectedColumns, setSelectedColumns] = useState([]);
   const [sorting, setSorting] = React.useState([]);
 
   const table = useReactTable({
@@ -227,7 +299,7 @@ export default function DataTable() {
   return (
     <>
       <Row>
-        <Col lg={12}>
+        {/* <Col lg={12}>
           <Card>
             <CardHeader className="align-items-center d-flex">
               <h4 className="card-title mb-0 flex-grow-1">Select Columns</h4>
@@ -250,6 +322,43 @@ export default function DataTable() {
               </Row>
             </CardBody>
           </Card>
+        </Col> */}
+        <Col lg={12}>
+          <Card>
+            <CardBody>
+              <div className="row justify-content-between align-items-center">
+                <Col xl={selectedColumns.length > 1 ? 8 : 5} className="mb-0 pb-0">
+                  <FormGroup row className="mb-0-imp align-items-center">
+                    <Label for="exampleEmail" sm={selectedColumns.length > 1 ? 3 : 4}>
+                      Select Columns
+                    </Label>
+                    <Col sm={8}>
+                      <Select
+                        value={selectedColumns}
+                        onChange={(e) => {
+                          setSelectedColumns(e);
+                        }}
+                        isMulti={true}
+                        options={keys}
+                        name="choices-single-default"
+                        id="idStatus"
+                      ></Select>
+                    </Col>
+                  </FormGroup>
+                </Col>
+                <Col xl={4}>
+                  <div className="d-flex justify-content-end">
+                    <Button color="info" size="sm">
+                      Export as PDF
+                    </Button>
+                    <Button className="ms-3" size="sm" color="primary">
+                      Export as CSV
+                    </Button>
+                  </div>
+                </Col>
+              </div>
+            </CardBody>
+          </Card>
         </Col>
         <Col lg={12}>
           <Card>
@@ -263,7 +372,10 @@ export default function DataTable() {
                           {table.getHeaderGroups().map((headerGroup) => (
                             <tr key={headerGroup.id}>
                               {headerGroup.headers.map((header) => (
-                                <th key={header.id}  onClick={header.column.getToggleSortingHandler()}>
+                                <th
+                                  key={header.id}
+                                  onClick={header.column.getToggleSortingHandler()}
+                                >
                                   {header.isPlaceholder
                                     ? null
                                     : flexRender(

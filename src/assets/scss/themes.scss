@@ -217,3 +217,7 @@ $value in $theme-colors {
   background-color: var(--#{$prefix}gray-300) !important;
   border-color: var(--#{$prefix}border-color) !important;
 }
+
+.mb-0-imp{
+  margin-bottom: 0px !important;
+}
