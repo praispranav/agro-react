@@ -2,7 +2,9 @@ import React from "react";
 import { Navigate } from "react-router-dom";
 
 //Dashboard
-import DashboardAnalytics from "../pages/DashboardAnalytics";
+import ReportingDashboard from "../pages/Reporting/Dashboard";
+import ReportingList from "../pages/Reporting/List"
+
 import DashboardCrm from "../pages/DashboardCrm";
 import DashboardEcommerce from "../pages/DashboardEcommerce";
 import DashboardJob from "../pages/DashboardJob/";
@@ -240,7 +242,8 @@ import FileManager from "../pages/FileManager";
 import ToDoList from "../pages/ToDo";
 
 const authProtectedRoutes = [
-  { path: "/reporting-analytics", component: <DashboardAnalytics /> },
+  { path: "/reporting-analytics", component: <ReportingDashboard /> },
+  { path: "/reporting-list", component: <ReportingList /> },
   { path: "/dashboard-crm", component: <DashboardCrm /> },
   { path: "/dashboard", component: <DashboardEcommerce /> },
   { path: "/index", component: <DashboardEcommerce /> },

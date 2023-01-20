@@ -1,6 +1,7 @@
 import React from 'react'
 import PrismCode from '../../../Components/Common/Prism';
 
+
 //DefaultTables code
 const DefaultTables = () => {
     const code = `<div className="table-responsive">
