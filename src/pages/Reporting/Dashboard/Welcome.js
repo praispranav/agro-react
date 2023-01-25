@@ -1,52 +1,51 @@
-import React from 'react';
-import { Alert, Card, CardBody, Col, Row } from 'reactstrap';
+import React from "react";
+import { Alert, Card, CardBody, CardHeader, Col, Row, Label } from "reactstrap";
 
 //Import Icons
 import FeatherIcon from "feather-icons-react";
 
 //import images
 import illustarator from "../../../assets/images/user-illustarator-2.png";
-import { Link } from 'react-router-dom';
+import Flatpickr from "react-flatpickr";
 
 const Welcome = () => {
-    return (
-        <React.Fragment>
-            <Row>
-                <Col xs={12}>
-                    <Card>
-                        <CardBody className="p-0">
-                            <Alert className="alert alert-success border-0 rounded-0 m-0 d-flex align-items-center" role="alert">
-                                <FeatherIcon
-                                    icon="alert-check"
-                                    className="text-white me-2 icon-sm"
-                                />
-                                <div className="flex-grow-1 text-truncate">
-                                    Hi Good Morning 😀
-                                </div>
-                            </Alert>
-
-                            <Row className="align-items-end">
-                                <Col sm={8}>
-                                    <div className="p-3">
-                                        <p className="fs-16 lh-base">Upgrade your plan from a <span className="fw-semibold">Free
-                                            trial</span>, to ‘Premium Plan’ <i className="mdi mdi-arrow-right"></i></p>
-                                        <div className="mt-3">
-                                            <Link to="/pages-pricing" className="btn btn-success">Welcome</Link>
-                                        </div>
-                                    </div>
-                                </Col>
-                                <Col sm={4}>
-                                    <div className="px-3">
-                                        <img src={illustarator} className="img-fluid" alt="" />
-                                    </div>
-                                </Col>
-                            </Row>
-                        </CardBody>
-                    </Card>
+  return (
+    <React.Fragment>
+      <Row>
+        <Col xs={12}>
+          <Card>
+            <CardHeader>
+              <h4 className="card-title">Select Date Range</h4>
+            </CardHeader>
+            <CardBody className="p-3">
+              <Row className="">
+                <Col sm={8}>
+                  <Flatpickr
+                    className="form-control"
+                    options={{
+                      mode: "range",
+                      dateFormat: "Y-m-d",
+                      value: [
+                        new Date("2023-01-21T18:30:00.000Z"),
+                        new Date("2023-01-26T18:30:00.000Z"),
+                      ],
+                      onChange: (dateRangeChange) =>
+                        console.log(dateRangeChange),
+                    }}
+                  />
                 </Col>
-            </Row>
-        </React.Fragment>
-    );
+                <Col sm={4}>
+                  <div className="px-3">
+                    <img src={illustarator} className="img-fluid" alt="" />
+                  </div>
+                </Col>
+              </Row>
+            </CardBody>
+          </Card>
+        </Col>
+      </Row>
+    </React.Fragment>
+  );
 };
 
 export default Welcome;

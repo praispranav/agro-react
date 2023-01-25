@@ -1588,7 +1588,7 @@ const BasicTables = () => {
                                     <p className="text-muted">Use <code>table-responsive</code> class to make any table responsive across all viewports. Responsive tables allow tables to be scrolled horizontally with ease.</p>
                                     <div className="live-preview">
                                         <div className="table-responsive">
-                                            <Table className="align-middle table-nowrap mb-0">
+                                            <Table className="table-hover align-middle table-nowrap mb-0">
                                                 <thead className="table-light">
                                                     <tr>
                                                         <th scope="col" style={{ "width": "42px" }}>

@@ -240,10 +240,20 @@ import UserProfile from "../pages/Authentication/user-profile";
 
 import FileManager from "../pages/FileManager";
 import ToDoList from "../pages/ToDo";
+import AssignAccessGroup from "../pages/User/AccessGroup/AssignAccessGroup";
+import CreateAccessGroup from "../pages/User/AccessGroup/CreateAccessGroup";
+import UserList from "../pages/User/UserList";
+import Activity from "../pages/User/Activity";
 
 const authProtectedRoutes = [
-  { path: "/reporting-analytics", component: <ReportingDashboard /> },
-  { path: "/reporting-list", component: <ReportingList /> },
+  { path: "/reporting/reporting-analytics", component: <ReportingDashboard /> },
+  { path: "/reporting/reporting-list", component: <ReportingList /> },
+
+  { path: "/user/user-list", component: <UserList /> },
+  { path: "/user/access-group/create-access-group", component: <CreateAccessGroup /> },
+  { path: "/user/access-group/assign-access-group", component: <AssignAccessGroup /> },
+  { path: "/user/activity", component: <Activity /> },
+
   { path: "/dashboard-crm", component: <DashboardCrm /> },
   { path: "/dashboard", component: <DashboardEcommerce /> },
   { path: "/index", component: <DashboardEcommerce /> },
@@ -451,9 +461,9 @@ const authProtectedRoutes = [
   {
     path: "/",
     exact: true,
-    component: <Navigate to="/reporting-analytics" />,
+    component: <Navigate to="/reporting/reporting-analytics" />,
   },
-  { path: "*", component: <Navigate to="/reporting-analytics" /> },
+  { path: "*", component: <Navigate to="/reporting/reporting-analytics" /> },
 ];
 
 const publicRoutes = [

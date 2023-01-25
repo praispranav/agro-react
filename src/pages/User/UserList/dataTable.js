@@ -20,258 +20,118 @@ import {
   Input,
   Row,
   Table,
+  Badge,
 } from "reactstrap";
+import OnlineOfflineStatus from "../../../Components/Common/OnlineOfflineStatus";
 
 const columnHelper = createColumnHelper();
 
 const defaultData = [
   {
-    CallDateTime: "tanner",
-    InboundCallId: "linsley",
-    Publisher: "linsley",
-    age: 24,
-    visits: 100,
-    status: "In Relationship",
-    progress: 50,
+    serialNo: "1",
+    firstName: "Pranav",
+    lastName: "Kumar",
+    mobileNo: "6203902842",
+    email: "praispranav@gmail.com",
+    status: "Active",
+    verified: true,
+    online: true,
   },
   {
-    CallDateTime: "tandy",
-    InboundCallId: "miller",
-    Publisher: "miller",
-    age: 40,
-    visits: 40,
-    status: "Single",
-    progress: 80,
+    serialNo: "2",
+    firstName: "Omkar",
+    lastName: "Nath",
+    mobileNo: "6203902842",
+    email: "praispranav@gmail.com",
+    status: "Inactive",
+    verified: true,
+    online: false,
   },
   {
-    CallDateTime: "joe",
-    InboundCallId: "dirte",
-    Publisher: "dirte",
-    age: 45,
-    visits: 20,
-    status: "Complicated",
-    progress: 10,
+    serialNo: "3",
+    firstName: "Ompriya",
+    lastName: "Kumari",
+    mobileNo: "6203902842",
+    email: "praispranav@gmail.com",
+    status: "Blocked",
+    verified: false,
+    online: true,
+  },
+  {
+    online: true,
+    serialNo: "4",
+    firstName: "Riti",
+    lastName: "Shree",
+    mobileNo: "6203902842",
+    email: "praispranav@gmail.com",
+    status: "Active",
+    verified: false,
   },
 ];
+
+const getColor = (value) => {
+  if (value === "Active") return "info";
+  if (value === "Inactive") return "secondary";
+  if (value === "Blocked") return "danger";
+};
 
 const columns = [
-  columnHelper.accessor((row) => row.InboundCallId, {
-    id: "InboundCallId",
+  columnHelper.accessor((row) => row.serialNo, {
+    id: "serialNo",
     cell: (info) => info.getValue(),
-    header: () => <span>Inbound Call Id</span>,
+    header: () => <span>Serial No</span>,
     footer: (info) => info.column.id,
-    minSize: 700,
-    size: 500,
-    
   }),
-  columnHelper.accessor("CallDateTime", {
+  columnHelper.accessor("firstName", {
+    id: "firstName",
     cell: (info) => info.getValue(),
-    header: () => <span>Call Date Time</span>,
+    header: () => <span>First Name</span>,
     footer: (info) => info.column.id,
   }),
-  columnHelper.accessor((row) => row.Publisher, {
-    id: "Publisher",
+  columnHelper.accessor((row) => row.lastName, {
+    id: "lastName",
     cell: (info) => info.getValue(),
-    header: () => <span>Publisher</span>,
+    header: () => <span>Last Name</span>,
     footer: (info) => info.column.id,
   }),
-  columnHelper.accessor((row) => row.Campaign, {
-    id: "Campaign",
+  columnHelper.accessor((row) => row.mobileNo, {
+    id: "Mobile No",
     cell: (info) => info.getValue(),
-    header: () => <span>Campaign</span>,
+    header: () => <span>Mobile No</span>,
     footer: (info) => info.column.id,
   }),
-  columnHelper.accessor((row) => row.Target, {
-    id: "Target",
+  columnHelper.accessor((row) => row.email, {
+    id: "Email",
     cell: (info) => info.getValue(),
-    header: () => <span>Target</span>,
+    header: () => <span>Email</span>,
     footer: (info) => info.column.id,
   }),
-  columnHelper.accessor((row) => row.Buyer, {
-    id: "Buyer",
-    cell: (info) => info.getValue(),
-    header: () => <span>Buyer</span>,
+  columnHelper.accessor((row) => row.status, {
+    id: "Status",
+    cell: (info) => (
+      <Badge pill={true} color={getColor(info.getValue())}>
+        {info.getValue()}
+      </Badge>
+    ),
+    header: () => <span>Status</span>,
     footer: (info) => info.column.id,
   }),
-  columnHelper.accessor((row) => row.LeadSource, {
-    id: "LeadSource",
-    cell: (info) => info.getValue(),
-    header: () => <span>Lead Source</span>,
+  columnHelper.accessor((row) => row.verified, {
+    id: "Verified",
+    cell: (info) => (
+      <Badge color={info.getValue() ? "primary" : "warning"}>
+        {info.getValue() ? "Yes" : "No"}
+      </Badge>
+    ),
+    header: () => <span>Verified</span>,
     footer: (info) => info.column.id,
   }),
-  columnHelper.accessor((row) => row.ConnectedDurationSec, {
-    id: "ConnectedDurationSec",
-    cell: (info) => info.getValue(),
-    header: () => <span>Connected Duration</span>,
+  columnHelper.accessor((row) => row.online, {
+    id: "Online/Offline",
+    cell: (info) => <OnlineOfflineStatus status={info.getValue()} />,
+    header: () => <span>Online/Offline</span>,
     footer: (info) => info.column.id,
   }),
-  columnHelper.accessor((row) => row.Payout, {
-    id: "Payout",
-    cell: (info) => info.getValue(),
-    header: () => <span>Payout</span>,
-    footer: (info) => info.column.id,
-  }),
-  columnHelper.accessor((row) => row.Dialed, {
-    id: "Dialed",
-    cell: (info) => info.getValue(),
-    header: () => <span>Dialed</span>,
-    footer: (info) => info.column.id,
-  }),
-  columnHelper.accessor((row) => row.TelcoCost, {
-    id: "TelcoCost",
-    cell: (info) => info.getValue(),
-    header: () => <span>TelcoCost</span>,
-    footer: (info) => info.column.id,
-  }),
-  columnHelper.accessor((row) => row.ConversionAdjusted, {
-    id: "ConversionAdjusted",
-    cell: (info) => info.getValue(),
-    header: () => <span>Conversion Adjusted</span>,
-    footer: (info) => info.column.id,
-  }),
-  columnHelper.accessor((row) => row.PayoutAdjusted, {
-    id: "PayoutAdjusted",
-    cell: (info) => info.getValue(),
-    header: () => <span>Payout Adjusted</span>,
-    footer: (info) => info.column.id,
-  }),
-  columnHelper.accessor((row) => row.ConversionAdjusted, {
-    id: "ConversionAdjusted",
-    cell: (info) => info.getValue(),
-    header: () => <span>Conversion Adjusted</span>,
-    footer: (info) => info.column.id,
-  }),
-  columnHelper.accessor((row) => row.IsConverted, {
-    id: "IsConverted",
-    cell: (info) => info.getValue(),
-    header: () => <span>Converted</span>,
-    footer: (info) => info.column.id,
-  }),
-  columnHelper.accessor((row) => row.ConversionAdjusted, {
-    id: "ConversionAdjusted",
-    cell: (info) => info.getValue(),
-    header: () => <span>Conversion Adjusted</span>,
-    footer: (info) => info.column.id,
-  }),
-  columnHelper.accessor((row) => row.IsBillable, {
-    id: "IsBillable",
-    cell: (info) => info.getValue(),
-    header: () => <span>Billable</span>,
-    footer: (info) => info.column.id,
-  }),
-  columnHelper.accessor("age", {
-    header: () => "Age",
-    cell: (info) => info.renderValue(),
-    footer: (info) => info.column.id,
-  }),
-  columnHelper.accessor("visits", {
-    header: () => <span>Visits</span>,
-    footer: (info) => info.column.id,
-  }),
-  // columnHelper.accessor("status", {
-  //   header: "Status",
-  //   footer: (info) => info.column.id,
-  // }),
-  // columnHelper.accessor("progress", {
-  //   header: "Profile Progress",
-  //   footer: (info) => info.column.id,
-  // }),
-];
-
-const keys = [
-  {
-    value: "Hangup",
-    label: "Hangup",
-  },
-  {
-    value: "CallerId",
-    label: "CallerId",
-  },
-  {
-    value: "InboundCallId",
-    label: "InboundCallId",
-  },
-  {
-    value: "Publisher",
-    label: "Publisher",
-  },
-  {
-    value: "PublisherId",
-    label: "PublisherId",
-  },
-  {
-    value: "Revenue",
-    label: "Revenue",
-  },
-  {
-    value: "Campaign",
-    label: "Campaign",
-  },
-  {
-    value: "Target",
-    label: "Target",
-  },
-  {
-    value: "TargetId",
-    label: "TargetId",
-  },
-  {
-    value: "Buyer",
-    label: "Buyer",
-  },
-  {
-    value: "BuyerId",
-    label: "BuyerId",
-  },
-  {
-    value: "ConnectedDurationSec",
-    label: "ConnectedDurationSec",
-  },
-  {
-    value: "Duplicate",
-    label: "Duplicate",
-  },
-  {
-    value: "Payout",
-    label: "Payout",
-  },
-  {
-    value: "Dialed",
-    label: "Dialed",
-  },
-  {
-    value: "RecordingUrl",
-    label: "RecordingUrl",
-  },
-  {
-    value: "TelcoCost",
-    label: "TelcoCost",
-  },
-  {
-    value: "ConversionAdjusted",
-    label: "ConversionAdjusted",
-  },
-  {
-    value: "PayoutAdjusted",
-    label: "PayoutAdjusted",
-  },
-  {
-    value: "IsConverted",
-    label: "IsConverted",
-  },
-  {
-    value: "IsBillable",
-    label: "IsBillable",
-  },
-  {
-    value: "JornayaId",
-    label: "JornayaId",
-  },
-  {
-    value: "LeadSource",
-    label: "LeadSource",
-  },
-  { value: "CallDateTime", label: "CallDateTime" },
 ];
 
 const SingleOptions = [
@@ -302,30 +162,6 @@ export default function DataTable() {
   return (
     <>
       <Row>
-        <Col lg={12}>
-          <Card>
-            <CardHeader className="align-items-center d-flex">
-              <h4 className="card-title mb-0 flex-grow-1">Select Columns</h4>
-            </CardHeader>
-            <CardBody>
-              <Row>
-                {keys.map((i) => (
-                  <Col lg={3} key={i}>
-                    <div className="form-check">
-                      <Label>{i.value}</Label>
-                      <Input
-                        className="form-check-input"
-                        type="checkbox"
-                        id="checkAll"
-                        defaultValue="option1"
-                      />
-                    </div>
-                  </Col>
-                ))}
-              </Row>
-            </CardBody>
-          </Card>
-        </Col>
         <Col lg={12}>
           <Card>
             <CardBody>
@@ -376,8 +212,7 @@ export default function DataTable() {
                               {headerGroup.headers.map((header) => (
                                 <th
                                   key={header.id}
-                                  colSpan={3}
-                                  style={{ width: header.getSize() + 'px'}}
+                                  style={{ width: header.getSize() + "px" }}
                                   onClick={header.column.getToggleSortingHandler()}
                                 >
                                   {header.isPlaceholder
@@ -421,7 +256,7 @@ export default function DataTable() {
                           {table.getRowModel().rows.map((row) => (
                             <tr key={row.id}>
                               {row.getVisibleCells().map((cell) => (
-                                <td scope="row" colSpan={2} key={cell.id}>
+                                <td scope="row" key={cell.id}>
                                   {flexRender(
                                     cell.column.columnDef.cell,
                                     cell.getContext()
