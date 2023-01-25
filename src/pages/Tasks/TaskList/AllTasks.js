@@ -292,7 +292,7 @@ const AllTasks = () => {
               <div className="flex-shrink-0 ms-4">
                 <ul className="list-inline tasks-list-menu mb-0">
                   <li className="list-inline-item">
-                    <Link to="/apps-tasks-details">
+                    <Link to="/task/task-detail/12">
                       <i className="ri-eye-fill align-bottom me-2 text-muted"></i>
                     </Link>
                   </li>

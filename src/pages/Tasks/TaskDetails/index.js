@@ -1,4 +1,5 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import { Container, Col, Row } from 'reactstrap';
 import BreadCrumb from '../../../Components/Common/BreadCrumb';
 import Comments from './Comments';
@@ -7,7 +8,10 @@ import TimeTracking from "./TimeTracking";
 
 
 const TaskDetails = () => {
-    document.title="Tasks Details | Velzon - React Admin & Dashboard Template";
+    const params = useParams();
+
+    document.title="Tasks Details | WeCall";
+    console.log("Params", params.id)
     return (
         <React.Fragment>
             <div className="page-content">

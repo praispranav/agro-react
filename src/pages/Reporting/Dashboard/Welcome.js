@@ -22,6 +22,7 @@ const Welcome = () => {
                 <Col sm={8}>
                   <Flatpickr
                     className="form-control"
+                    placeholder="Select Date Range"
                     options={{
                       mode: "range",
                       dateFormat: "Y-m-d",

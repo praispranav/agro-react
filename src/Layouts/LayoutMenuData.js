@@ -258,9 +258,15 @@ const Navdata = () => {
           parentId: "task",
         },
         {
+          id: "task-list",
+          label: "Task List",
+          link: "/task/task-list",
+          parentId: "task",
+        },
+        {
           id: "task-board",
           label: "Task Board",
-          link: "/task/task-board",
+          link: "/task/board",
           parentId: "task",
         },
         {
@@ -287,7 +293,7 @@ const Navdata = () => {
         {
           id: "notifications",
           label: "Notifications",
-          link: "/configuration/notifications",
+          link: "/configuration/notification",
           parentId: "configuration",
         },
       ],

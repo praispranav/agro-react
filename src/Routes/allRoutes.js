@@ -244,6 +244,7 @@ import AssignAccessGroup from "../pages/User/AccessGroup/AssignAccessGroup";
 import CreateAccessGroup from "../pages/User/AccessGroup/CreateAccessGroup";
 import UserList from "../pages/User/UserList";
 import Activity from "../pages/User/Activity";
+import NotificationsConfiguration from "../pages/Configuration/Notification";
 
 const authProtectedRoutes = [
   { path: "/reporting/reporting-analytics", component: <ReportingDashboard /> },
@@ -253,7 +254,14 @@ const authProtectedRoutes = [
   { path: "/user/access-group/create-access-group", component: <CreateAccessGroup /> },
   { path: "/user/access-group/assign-access-group", component: <AssignAccessGroup /> },
   { path: "/user/activity", component: <Activity /> },
-
+  
+  { path: "/task/task-list", component: <TaskList /> },
+  { path: "/task/task-detail/:id", component: <TaskDetails /> },
+  { path: "/task/board", component: <ToDoList /> },
+  { path: "/task/teams", component: <ToDoList /> },
+  
+  { path: "/configuration/notification", component: <NotificationsConfiguration /> },
+  
   { path: "/dashboard-crm", component: <DashboardCrm /> },
   { path: "/dashboard", component: <DashboardEcommerce /> },
   { path: "/index", component: <DashboardEcommerce /> },
