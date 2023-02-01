@@ -71,10 +71,14 @@ import Jobs from "./job/reducer";
 //API Key
 import APIKey from "./apikey/reducer";
 
-import Lookup from "./lookup/reducer"
+import Lookup from "./lookup/reducer";
+import CropType from "./master/cropType/reducer"
+import MasterCrop from "./master/masterCrop/reducer"
 
 const rootReducer = combineReducers({
     // public
+    CropType,
+    MasterCrop,
     Layout,
     Login,
     Account,

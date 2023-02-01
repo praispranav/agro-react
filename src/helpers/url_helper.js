@@ -110,7 +110,8 @@ export const GET_MONTHLY_DATA = "/monthly-data";
 // Audiences Metrics
 export const GET_ALLAUDIENCESMETRICS_DATA = "/allAudiencesMetrics-data";
 export const GET_MONTHLYAUDIENCESMETRICS_DATA = "/monthlyAudiencesMetrics-data";
-export const GET_HALFYEARLYAUDIENCESMETRICS_DATA = "/halfyearlyAudiencesMetrics-data";
+export const GET_HALFYEARLYAUDIENCESMETRICS_DATA =
+  "/halfyearlyAudiencesMetrics-data";
 export const GET_YEARLYAUDIENCESMETRICS_DATA = "/yearlyAudiencesMetrics-data";
 
 // Users by Device
@@ -226,7 +227,6 @@ export const GET_APPLICATION_LIST = "/application-list";
 //JOB APPLICATION
 export const GET_API_KEY = "/api-key";
 
-
 //lookups
 export const LOOKUP_FARM_TYPE = "/Lookup/LookUpFarmType";
 export const LOOKUP_CROP_TYPE = "/Lookup/LookUpCropType";
@@ -235,3 +235,14 @@ export const LOOKUP_VARIETY_TYPE = "/Lookup/LookUpVarietyType";
 export const LOOKUP_YIELD_TYPE = "/Lookup/LookUpYieldType";
 export const LOOKUP_IRRIGATION = "/Lookup/LookUpIrrigationType";
 export const LOOKUP_MASTER_CROP = "/Lookup/LookUpMasterCrop";
+
+//mastercrop
+export const GET_MASTER_CROP = "/AppSetting/GetMasterCropList";
+export const ADD_MASTER_CROP = "/AppSetting/CreateMasterCropType";
+export const EDIT_MASTER_CROP = "/AppSetting/UpdateMasterCrop";
+export const DELETE_MASTER_CROP = "/AppSetting/DeleteMasterCrop";
+
+export const GET_CROP_TYPE = "/AppSetting/GetCropTypeList";
+export const ADD_CROP_TYPE = "/AppSetting/CreateCropType";
+export const EDIT_CROP_TYPE = "/AppSetting/UpdateCropType";
+export const DELETE_CROP_TYPE = "/AppSetting/DeleteCropType";
