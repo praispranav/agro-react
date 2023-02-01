@@ -1,15 +1,21 @@
 import React, { useEffect } from 'react';
 import withRouter from '../Components/Common/withRouter';
-
 //redux
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { changeLayout } from '../store/actions';
 
 const NonAuthLayout = ({ children }) => {
     const {
-        layoutModeType,
+        layoutModeType, layoutType
     } = useSelector(state => ({
         layoutModeType: state.Layout.layoutModeType,
+        layoutType: state.Layout.layoutType
     }));
+    const dispatch = useDispatch();
+
+    useEffect(()=>{
+        dispatch(changeLayout('horizontal'))
+    },[])
 
     useEffect(() => {
         if (layoutModeType === "dark") {

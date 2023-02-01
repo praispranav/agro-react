@@ -63,9 +63,12 @@ import jobSaga from "./job/saga";
 //API Key
 import APIKeysaga from "./apikey/saga";
 
+import lookupSaga from "./lookup/saga";
+
 export default function* rootSaga() {
   yield all([
     //public
+    fork(lookupSaga),
     fork(LayoutSaga),
     fork(AccountSaga),
     fork(AuthSaga),

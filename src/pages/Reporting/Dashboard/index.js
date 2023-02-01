@@ -15,7 +15,7 @@ import Welcome from './Welcome';
 import USAVectorMap from './USAVectorMap';
 
 const DashboardAnalytics = () => {
-document.title="Reporting Analytics | WeCall";
+document.title="Admin | Smart Agro Farm";
     return (
         <React.Fragment>
             <div className="page-content">

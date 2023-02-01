@@ -10,6 +10,7 @@ const Navdata = () => {
   const [isAccessGroup, setIsAccessGroup] = useState(false);
   const [isTasks, setIsTasks] = useState(false);
   const [isConfiguration, setIsConfiguration] = useState(false);
+  const [info, setInfo] = useState(false)
   // const [isTask, setIsTask] = useState(false);
 
   const [isApps, setIsApps] = useState(false);
@@ -159,144 +160,83 @@ const Navdata = () => {
       isHeader: true,
     },
     {
-      id: "reporting",
-      label: "Reporting",
+      id: "dashboard",
+      label: "Dashboards",
       icon: "ri-dashboard-2-line",
-      link: "/reporting",
-      stateVariables: isReporting,
+      link: "/#",
+      stateVariables: isDashboard,
       click: function (e) {
-        setIsReporting((prev) => !prev);
-        setIscurrentState("Reporting");
-        updateIconSidebar(e);
         e.preventDefault();
+        setIsDashboard(!isDashboard);
+        setIscurrentState("Dashboard");
+        updateIconSidebar(e);
       },
       subItems: [
         {
           id: "analytics",
-          label: "Analytics",
-          link: "/reporting/reporting-analytics",
-          parentId: "reporting",
+          label: "Admin",
+          link: "/admin-dashboard",
+          parentId: "dashboard",
         },
         {
-          id: "list",
-          label: "List",
-          link: "/reporting/reporting-list",
-          parentId: "reporting",
+          id: "farms",
+          label: "Farms",
+          link: "/farms",
+          parentId: "dashboard",
         },
       ],
     },
     {
-      id: "user",
-      label: "User",
-      icon: "ri-user-2-fill",
-      link: "/user",
-      stateVariables: isUser,
+      id: "apps",
+      label: "Apps Setting",
+      icon: "ri-apps-2-line",
+      link: "/#",
       click: function (e) {
         e.preventDefault();
-        setIsUser((prev) => !prev);
-        setIscurrentState("User");
+        setIsApps(!isApps);
+        setIscurrentState("Apps");
         updateIconSidebar(e);
       },
+      stateVariables: isApps,
       subItems: [
         {
-          id: "users-list",
-          label: "Users List",
-          link: "/user/user-list",
-          parentId: "user",
+          id: "calendar",
+          label: "User Management",
+          link: "/apps-calendar",
+          parentId: "apps",
         },
         {
-          id: "access-group",
-          label: "Access Group",
-          link: "/user/access-group",
-          parentId: "user",
-          isChildItem: true,
-          click: function (e) {
-            e.preventDefault();
-            setEmail(!isEmail);
-          },
-          stateVariables: isEmail,
-          childItems: [
-            {
-              id: 1,
-              label: "Create Access Group",
-              link: "/user/access-group/create-access-group",
-              parentId: "user",
-            },
-            {
-              id: 2,
-              label: "Assign Access Group",
-              link: "/user/access-group/assign-access-group",
-              parentId: "user",
-            },
-          ],
+          id: "chat",
+          label: "Farm Setting",
+          link: "/apps-chat",
+          parentId: "apps",
         },
         {
-          id: "activity",
-          label: "Activity",
-          link: "/user/activity",
-          parentId: "user",
+          id: "chat",
+          label: "Field Setting",
+          link: "/apps-chat",
+          parentId: "apps",
+        },
+        {
+          id: "chat",
+          label: "Plot Setting",
+          link: "/apps-chat",
+          parentId: "apps",
         },
       ],
     },
     {
-      id: "task",
-      label: "Task",
-      icon: "ri-briefcase-3-line",
-      link: "/task",
-      stateVariables: isTasks,
+      id: "info",
+      label: "Info",
+      icon: "ri-information-fill",
+      link: "/info",
+      stateVariables: info,
       click: function (e) {
         e.preventDefault();
-        setIsTasks((prev) => !prev);
-        setIscurrentState("Task");
+        setIsDashboard(!info);
+        setIscurrentState("Info");
         updateIconSidebar(e);
       },
-      subItems: [
-        {
-          id: "teams",
-          label: "Teams",
-          link: "/task/teams",
-          parentId: "task",
-        },
-        {
-          id: "task-list",
-          label: "Task List",
-          link: "/task/task-list",
-          parentId: "task",
-        },
-        {
-          id: "task-board",
-          label: "Task Board",
-          link: "/task/board",
-          parentId: "task",
-        },
-        {
-          id: "schedule",
-          label: "Schedule",
-          link: "/task/schedule",
-          parentId: "task",
-        },
-      ],
-    },
-    {
-      id: "configuration",
-      label: "Configuration",
-      icon: "ri-settings-2-fill",
-      link: "/configuration",
-      stateVariables: isConfiguration,
-      click: function (e) {
-        e.preventDefault();
-        setIsConfiguration((prev) => !prev);
-        setIscurrentState("Configuration");
-        updateIconSidebar(e);
-      },
-      subItems: [
-        {
-          id: "notifications",
-          label: "Notifications",
-          link: "/configuration/notification",
-          parentId: "configuration",
-        },
-      ],
     },
   ];
   return <React.Fragment>{menuItems}</React.Fragment>;

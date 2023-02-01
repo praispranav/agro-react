@@ -7,7 +7,6 @@ import { apiError, loginSuccess, logoutUserSuccess } from "./actions";
 //Include Both Helper File with needed methods
 import { getFirebaseBackend } from "../../../helpers/firebase_helper";
 import {
-  postFakeLogin,
   postJwtLogin,
   postSocialLogin,
 } from "../../../helpers/fakebackend_helper";
@@ -15,44 +14,58 @@ import {
 const fireBaseBackend = getFirebaseBackend();
 
 function* loginUser({ payload: { user, history } }) {
+  
   try {
-    if (process.env.REACT_APP_DEFAULTAUTH === "firebase") {
-      const response = yield call(
-        fireBaseBackend.loginUser,
-        user.email,
-        user.password
-      );
-      if (response) {
-        yield put(loginSuccess(response));
-        history('/dashboard');
-      } else {
-        yield put(apiError(response));
-      }
-    } else if (process.env.REACT_APP_DEFAULTAUTH === "jwt") {
-      const response = yield call(postJwtLogin, {
-        email: user.email,
-        password: user.password,
-      });
-      sessionStorage.setItem("authUser", JSON.stringify(response));
-      if (response) {
-        yield put(loginSuccess(response));
-        history('/dashboard');
-      } else {
-        yield put(apiError(response));
-      }
-    } else if (process.env.REACT_APP_API_URL) {
-      const response = yield call(postFakeLogin, {
-        email: user.email,
-        password: user.password,
-      });
-      if (response.status === "success") {
-        yield put(loginSuccess(response));
-        history('/dashboard');
-        sessionStorage.setItem("authUser", JSON.stringify(response));
-      } else {
-        yield put(apiError(response));
-      }
+    const response = yield call(postJwtLogin, {
+      UserName: user.email,
+      Password: user.password,
+    });
+    sessionStorage.setItem("authUser", JSON.stringify(response));
+    if (response) {
+      console.log(response)
+      yield put(loginSuccess(response));
+      history('/admin-dashboard');
+    } else {
+      yield put(apiError(response));
     }
+
+    // if (process.env.REACT_APP_DEFAULTAUTH === "firebase") {
+    //   const response = yield call(
+    //     fireBaseBackend.loginUser,
+    //     user.email,
+    //     user.password
+    //   );
+    //   if (response) {
+    //     yield put(loginSuccess(response));
+    //     history('/dashboard');
+    //   } else {
+    //     yield put(apiError(response));
+    //   }
+    // } else if (process.env.REACT_APP_DEFAULTAUTH === "jwt") {
+    //   const response = yield call(postJwtLogin, {
+    //     email: user.email,
+    //     password: user.password,
+    //   });
+    //   sessionStorage.setItem("authUser", JSON.stringify(response));
+    //   if (response) {
+    //     yield put(loginSuccess(response));
+    //     history('/admin-dashboard');
+    //   } else {
+    //     yield put(apiError(response));
+    //   }
+    // } else if (process.env.REACT_APP_API_URL) {
+    //   const response = yield call(postFakeLogin, {
+    //     email: user.email,
+    //     password: user.password,
+    //   });
+    //   if (response.status === "success") {
+    //     yield put(loginSuccess(response));
+    //     history('/dashboard');
+    //     sessionStorage.setItem("authUser", JSON.stringify(response));
+    //   } else {
+    //     yield put(apiError(response));
+    //   }
+    // }
   } catch (error) {
     yield put(apiError(error));
   }

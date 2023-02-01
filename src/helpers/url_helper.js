@@ -3,7 +3,7 @@ export const POST_FAKE_REGISTER = "/auth/signup";
 
 //LOGIN
 export const POST_FAKE_LOGIN = "/auth/signin";
-export const POST_FAKE_JWT_LOGIN = "/post-jwt-login";
+export const POST_FAKE_JWT_LOGIN = "/Account/LoginUser";
 export const POST_FAKE_PASSWORD_FORGET = "/auth/forgot-password";
 export const POST_FAKE_JWT_PASSWORD_FORGET = "/jwt-forget-pwd";
 export const SOCIAL_LOGIN = "/social-login";
@@ -225,3 +225,13 @@ export const GET_APPLICATION_LIST = "/application-list";
 
 //JOB APPLICATION
 export const GET_API_KEY = "/api-key";
+
+
+//lookups
+export const LOOKUP_FARM_TYPE = "/Lookup/LookUpFarmType";
+export const LOOKUP_CROP_TYPE = "/Lookup/LookUpCropType";
+export const LOOKUP_SOIL_TYPE = "/Lookup/LookUpSoilType";
+export const LOOKUP_VARIETY_TYPE = "/Lookup/LookUpVarietyType";
+export const LOOKUP_YIELD_TYPE = "/Lookup/LookUpYieldType";
+export const LOOKUP_IRRIGATION = "/Lookup/LookUpIrrigationType";
+export const LOOKUP_MASTER_CROP = "/Lookup/LookUpMasterCrop";

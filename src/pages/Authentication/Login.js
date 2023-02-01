@@ -24,16 +24,8 @@ import { Link } from "react-router-dom";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 
-//Social Media Imports
-import { GoogleLogin } from "react-google-login";
-// import TwitterLogin from "react-twitter-auth"
-import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
 // actions
 import { loginUser, socialLogin, resetLoginFlag } from "../../store/actions";
-
-import logoLight from "../../assets/images/logo-light.png";
-//Import config
-import { facebook, google } from "../../config";
 
 import withRouter from "../../Components/Common/withRouter";
 import logoWhite from "../../assets/wecall-images/logoWhite.svg";
@@ -64,8 +56,8 @@ const Login = (props) => {
     enableReinitialize: true,
 
     initialValues: {
-      email: userLogin.email || "admin@themesbrand.com" || "",
-      password: userLogin.password || "123456" || "",
+      email: userLogin.email || "superadmin" || "",
+      password: userLogin.password || "Super01!" || "",
     },
     validationSchema: Yup.object({
       email: Yup.string().required("Please Enter Your Email"),
@@ -117,7 +109,7 @@ const Login = (props) => {
     }
   }, [dispatch, error]);
 
-  document.title = "SignIn | WeCall";
+  document.title = "SignIn | Smart Agro Farm";
   return (
     <React.Fragment>
       <ParticlesAuth>
@@ -145,7 +137,7 @@ const Login = (props) => {
                     <div className="text-center mt-2">
                       <h5 className="text-primary">Welcome Back !</h5>
                       <p className="text-muted">
-                        Sign in to continue to WeCall.
+                        Sign in to continue to Smart Agro Farm.
                       </p>
                     </div>
                     {errorMsg && errorMsg ? (
@@ -162,13 +154,13 @@ const Login = (props) => {
                       >
                         <div className="mb-3">
                           <Label htmlFor="email" className="form-label">
-                            Email
+                            Username
                           </Label>
                           <Input
-                            name="email"
+                            name="username"
                             className="form-control"
-                            placeholder="Enter email"
-                            type="email"
+                            placeholder="Enter username"
+                            type="username"
                             onChange={validation.handleChange}
                             onBlur={validation.handleBlur}
                             value={validation.values.email || ""}

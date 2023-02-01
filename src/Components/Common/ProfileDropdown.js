@@ -12,13 +12,13 @@ const ProfileDropdown = () => {
     }));
 
     const [userName, setUserName] = useState("Admin");
+    const [role, setRole] = useState("");
 
     useEffect(() => {
         if (sessionStorage.getItem("authUser")) {
             const obj = JSON.parse(sessionStorage.getItem("authUser"));
-            setUserName(process.env.REACT_APP_DEFAULTAUTH === "fake" ? obj.username === undefined ? user.first_name ? user.first_name : obj.data.first_name : "Admin" || "Admin" :
-                process.env.REACT_APP_DEFAULTAUTH === "firebase" ? obj.providerData[0].email : "Admin"
-            );
+            setUserName(obj.userInfor.fullName);
+            setRole(obj.userInfor.role)
         }
     }, [userName, user]);
 
@@ -36,7 +36,7 @@ const ProfileDropdown = () => {
                             alt="Header Avatar" />
                         <span className="text-start ms-xl-2">
                             <span className="d-none d-xl-inline-block ms-1 fw-medium user-name-text">{userName}</span>
-                            <span className="d-none d-xl-block ms-1 fs-12 text-muted user-name-sub-text">Founder</span>
+                            <span className="d-none d-xl-block ms-1 fs-12 text-muted user-name-sub-text">{role}</span>
                         </span>
                     </span>
                 </DropdownToggle>
