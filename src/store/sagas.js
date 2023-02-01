@@ -64,11 +64,16 @@ import jobSaga from "./job/saga";
 import APIKeysaga from "./apikey/saga";
 
 import lookupSaga from "./lookup/saga";
+import masterCropSaga from "./master/masterCrop/saga";
+import cropTypeSaga from "./master/cropType/saga";
 
 export default function* rootSaga() {
   yield all([
     //public
+    fork(cropTypeSaga),
+    fork(masterCropSaga),
     fork(lookupSaga),
+    fork(masterCropSaga),
     fork(LayoutSaga),
     fork(AccountSaga),
     fork(AuthSaga),

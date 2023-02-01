@@ -184,6 +184,18 @@ const Navdata = () => {
           link: "/farms",
           parentId: "dashboard",
         },
+        {
+          id: "master-crop",
+          label: "Master Crop",
+          link: "/master-crop",
+          parentId: "dashboard",
+        },
+        {
+          id: "crop-type",
+          label: "Crop Type",
+          link: "/crop-type",
+          parentId: "dashboard",
+        },
       ],
     },
     {
