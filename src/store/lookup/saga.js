@@ -10,7 +10,6 @@ import {
   fetchVarietyType,
   fetchYieldType,
 } from "../../helpers/lookup_helper";
-
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import {
@@ -24,7 +23,6 @@ import {
 } from "./actionTypes";
 import {
   errorLookup,
-  // getCropTypeDataSuccess,
   getCropTypeDataSuccess,
   startLookupLoading,
   getFarmTypeDataSuccess,
@@ -47,7 +45,6 @@ export function* getFarmType() {
 
 export function* getCropType() {
   try {
-    startLookupLoading();
     const response = yield call(fetchCropType);
     yield put(getCropTypeDataSuccess(response.data));
   } catch (error) {
@@ -68,7 +65,6 @@ export function* getSoilType() {
 
 export function* getVarietyType() {
   try {
-    startLookupLoading();
     const response = yield call(fetchVarietyType);
     console.log("Variety", response);
     yield put(getVarietyTypeDataSuccess(response.data));
@@ -80,7 +76,6 @@ export function* getVarietyType() {
 
 export function* getYieldType() {
   try {
-    startLookupLoading();
     const response = yield call(fetchYieldType);
     yield put(getYieldTypeDataSuccess(response.data));
   } catch (error) {
@@ -91,7 +86,6 @@ export function* getYieldType() {
 
 export function* getIrrigation() {
   try {
-    startLookupLoading();
     const response = yield call(fetchIrrigation);
     yield put(getIrrigationDataSuccess(response.data));
   } catch (error) {
@@ -102,9 +96,9 @@ export function* getIrrigation() {
 
 export function* getMasterCrop({ payload: { search } }) {
   try {
-    startLookupLoading();
-    const response = yield call(fetchMasterCrop, { SearchCropType: search });
-    yield put(getMasterCropDataSuccess(response.data));
+    console.log('search-----------', search)
+    // const response = yield call(fetchMasterCrop, { SearchCropType: search });
+    // yield put(getMasterCropDataSuccess(response.data));
   } catch (error) {
     yield put(errorLookup(error));
     toast.error("Failed to Load Master Crop Data.", { autoClose: 4000 });
