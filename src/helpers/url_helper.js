@@ -238,7 +238,7 @@ export const LOOKUP_MASTER_CROP = "/Lookup/LookUpMasterCrop";
 
 //mastercrop
 export const GET_MASTER_CROP = "/AppSetting/GetMasterCropList";
-export const ADD_MASTER_CROP = "/AppSetting/CreateMasterCropType";
+export const ADD_MASTER_CROP = "/AppSetting/CreateMasterCrop";
 export const EDIT_MASTER_CROP = "/AppSetting/UpdateMasterCrop";
 export const DELETE_MASTER_CROP = "/AppSetting/DeleteMasterCrop";
 

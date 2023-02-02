@@ -24,7 +24,6 @@ import { toast } from "react-toastify";
 export function* getMasterCrop({ payload }) {
   try {
     const response = yield call(fetchMasterCrop, payload);
-
     yield put(getMasterCropSuccess(response.data));
   } catch (error) {
     // yield put(errorLookup(error));

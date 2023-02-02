@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   createColumnHelper,
   flexRender,
@@ -10,7 +10,7 @@ import {
   CardHeader,
   Card,
   CardBody,
-  Table,
+  Table,Modal, ModalBody,
   Button,
   Badge,
 } from "reactstrap";
@@ -27,14 +27,21 @@ const columnHelper = createColumnHelper();
 
 const ColumnAction = ({ id }) => {
   const { data } = useSelector((state) => ({ data: state.CropType.data }));
+  const [isDeleteConfirmationModalOpen, setDeleteConfirmationModalOpen] =
+    useState(false);
 
   const findCropType = (id) => data.find((i) => i.cropTypeId === id);
 
   const dispatch = useDispatch();
 
-  const openConfirmDeleteModal = () => {};
+  const toggleConfirmationModal = () => {
+    setDeleteConfirmationModalOpen((prev) => !prev);
+  };
 
-  const deleteCropType = () => dispatch(deleteCropTypeSaga(id));
+  const deleteCropType = () =>{
+    dispatch(deleteCropTypeSaga({ CropTypeId: id }));
+    toggleConfirmationModal();
+  }
 
   const editCropType = () => dispatch(editCropTypeFrom(findCropType(id)));
   return (
@@ -49,7 +56,7 @@ const ColumnAction = ({ id }) => {
         <i className="ri-pencil-line"></i>
       </Button>
       <Button
-        onClick={deleteCropType}
+        onClick={toggleConfirmationModal}
         color="danger"
         size="sm"
         className="btn-icon ms-3"
@@ -57,6 +64,53 @@ const ColumnAction = ({ id }) => {
       >
         <i className="ri-delete-bin-2-line"></i>
       </Button>
+      <Modal
+        isOpen={isDeleteConfirmationModalOpen}
+        toggle={toggleConfirmationModal}
+        centered
+      >
+        <ModalBody>
+          <div className="text-end">
+            <button
+              type="button"
+              onClick={() => {
+                toggleConfirmationModal();
+              }}
+              className="btn-close text-end"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div className="d-flex justify-content-center">
+            <div className="mt-2 text-center">
+              <lord-icon
+                src="https://cdn.lordicon.com/vyukcgvf.json"
+                trigger="loop"
+                style={{ width: "120px", height: "120px" }}
+              ></lord-icon>
+
+              <h4 className="mb-3 mt-4">Are you sure want to delete?</h4>
+              <p className="text-muted fs-15 mb-4">
+                You will not able to revert this back.
+              </p>
+              <div className="hstack gap-2 justify-content-center">
+                <button
+                  className="btn btn-light"
+                  onClick={toggleConfirmationModal}
+                >
+                  Close
+                </button>
+                <button
+                  className="btn btn-soft-danger"
+                  onClick={deleteCropType}
+                >
+                  <i className=" ri-delete-bin-2-line align-bottom"></i> Delete
+                </button>
+              </div>
+            </div>
+          </div>
+        </ModalBody>
+      </Modal>
     </React.Fragment>
   );
 };
@@ -127,9 +181,7 @@ export default function List() {
   });
 
   useEffect(() => {
-    dispatch(
-      getCropType()
-    );
+    dispatch(getCropType());
   }, []);
 
   const addCropType = () => {
