@@ -8,6 +8,7 @@ export default function MasterCrop(){
     const [isFormVisible, setFromVisible] = useState(false);
     const [isEditMode, setIsEditMode] = useState(false);
 
+    document.title = 'Master Crop | Smart Agro Farm'
     return (
         <React.Fragment>
             <div className="page-content">

@@ -1,38 +1,36 @@
-import { call, put, takeEvery, takeLatest } from "redux-saga/effects";
+import { toast } from "react-toastify";
+import { call, put, takeLatest } from "redux-saga/effects";
 import {
-  GET_MASTER_CROP,
-  ADD_MASTER_CROP,
-  EDIT_MASTER_CROP,
-  DELETE_MASTER_CROP,
-} from "./action";
-import {
-  fetchMasterCrop,
-  addMasterCrop as addMasterCropApi,
-  editMasterCrop as editMasterCropApi,
-  deleteMasterCrop as deleteMasterCropApi,
+  addMasterCrop as addMasterCropApi, deleteMasterCrop as deleteMasterCropApi, editMasterCrop as editMasterCropApi, fetchMasterCrop
 } from "../../../helpers/normal_api_helper";
 import {
-  getMasterCrop as getMasterCropAction,
+  ADD_MASTER_CROP, DELETE_MASTER_CROP, EDIT_MASTER_CROP, GET_MASTER_CROP
+} from "./action";
+import {
   addMasterCropSuccess,
+  clearFormMasterCrop,
   closeAddEditMasterCropModal,
   deleteMasterCropSuccess,
-  editMasterCropSuccess,
-  getMasterCropSuccess,
+  editMasterCropSuccess, errorMasterCropLoading, getMasterCrop as getMasterCropAction, getMasterCropSuccess,
+  startMasterCropListLoading, startMasterCropLoading, stopMasterCropListLoading, stopMasterCropLoading
 } from "./actionType";
-import { toast } from "react-toastify";
 
 export function* getMasterCrop({ payload }) {
   try {
+    console.log("Payload", payload);
+    yield put(startMasterCropListLoading());
     const response = yield call(fetchMasterCrop, payload);
     yield put(getMasterCropSuccess(response.data));
+    yield put(stopMasterCropListLoading());
   } catch (error) {
-    // yield put(errorLookup(error));
+    yield put(errorMasterCropLoading(""));
     toast.error("Failed to Load Farm Type Data.", { autoClose: 4000 });
   }
 }
 
 export function* addMasterCrop({ payload }) {
   try {
+    yield put(startMasterCropLoading());
     const response = yield call(addMasterCropApi, payload);
     yield put(addMasterCropSuccess(response.data));
     if (response) {
@@ -40,36 +38,43 @@ export function* addMasterCrop({ payload }) {
     }
     yield put(addMasterCropSuccess(response.data));
     yield put(closeAddEditMasterCropModal());
+    yield put(stopMasterCropLoading());
+    yield put(clearFormMasterCrop());
     yield put(getMasterCropAction());
   } catch (error) {
-    // yield put(errorLookup(error));
-    toast.error("Failed to Load Farm Type Data.", { autoClose: 4000 });
+    yield put(errorMasterCropLoading(""));
+    toast.error("Failed to Load Master Crop Data.", { autoClose: 4000 });
   }
 }
 export function* editMasterCrop({ payload }) {
   try {
+    yield put(startMasterCropLoading());
     const response = yield call(editMasterCropApi, payload);
     if (response) {
       toast.success(response.message, { autoClose: 3000 });
     }
     yield put(editMasterCropSuccess(response.data));
     yield put(closeAddEditMasterCropModal());
+    yield put(stopMasterCropLoading());
+    yield put(clearFormMasterCrop());
     yield put(getMasterCropAction());
   } catch (error) {
-    // yield put(errorLookup(error));
+    yield put(errorMasterCropLoading(""));
     toast.error("Failed to Load Farm Type Data.", { autoClose: 4000 });
   }
 }
 
 export function* deleteMasterCrop({ payload }) {
   try {
+    yield put(startMasterCropLoading());
     const response = yield call(deleteMasterCropApi, payload);
     yield put(deleteMasterCropSuccess(response.data));
+    yield put(stopMasterCropLoading());
     if (response) {
       toast.success(response.message, { autoClose: 3000 });
     }
   } catch (error) {
-    // yield put(errorLookup(error));
+    yield put(errorMasterCropLoading(""));
     toast.error("Failed to Load Farm Type Data.", { autoClose: 4000 });
   }
 }

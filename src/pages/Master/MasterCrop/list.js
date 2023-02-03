@@ -4,6 +4,8 @@ import {
   flexRender,
   getCoreRowModel,
   useReactTable,
+  getSortedRowModel,
+  getPaginationRowModel,
 } from "@tanstack/react-table";
 import {
   CardFooter,
@@ -12,9 +14,11 @@ import {
   CardBody,
   Table,
   Button,
-  Badge,
   Modal,
   ModalBody,
+  Pagination,
+  PaginationItem,
+  PaginationLink,
 } from "reactstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
@@ -24,7 +28,6 @@ import {
   editMasterCropFrom,
   getMasterCrop,
 } from "../../../store/master/masterCrop/actionType";
-import ErrorImage from "../../../assets/images/error.svg";
 
 const columnHelper = createColumnHelper();
 
@@ -41,10 +44,10 @@ const ColumnAction = ({ id }) => {
     setDeleteConfirmationModalOpen((prev) => !prev);
   };
 
-  const deleteCropType = () =>{
+  const deleteCropType = () => {
     dispatch(deleteMasterCropSaga({ MasterCropID: id }));
     toggleConfirmationModal();
-  } 
+  };
 
   const editCropType = () => {
     dispatch(editMasterCropFrom(findCropType(id)));
@@ -105,7 +108,10 @@ const ColumnAction = ({ id }) => {
                 >
                   Close
                 </button>
-                <button className="btn btn-soft-danger" onClick={deleteCropType}>
+                <button
+                  className="btn btn-soft-danger"
+                  onClick={deleteCropType}
+                >
                   <i className=" ri-delete-bin-2-line align-bottom"></i> Delete
                 </button>
               </div>
@@ -123,9 +129,9 @@ const getStatusColor = (status) => {
 };
 
 const columns = [
-  columnHelper.accessor("masterCropID", {
+  columnHelper.accessor("rowNum", {
     cell: (info) => info.getValue(),
-    header: () => <span>Serial No.</span>,
+    header: () => <span>#</span>,
     footer: (info) => info.column.id,
   }),
   columnHelper.accessor((row) => row.masterCropName, {
@@ -148,7 +154,7 @@ const columns = [
     footer: (info) => info.column.id,
   }),
 
-  columnHelper.accessor((row) => row.masterCropName, {
+  columnHelper.accessor((row) => row.cropTypeName, {
     id: "cropTypeName",
     cell: (info) => info.getValue(),
     header: () => <span>Crop Type Name</span>,
@@ -192,10 +198,13 @@ export default function List() {
     },
     onSortingChange: setSorting,
     getCoreRowModel: getCoreRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
   });
 
   useEffect(() => {
     dispatch(getMasterCrop());
+    console.log("Get Master Crop");
   }, []);
 
   const addCropType = () => {
@@ -206,14 +215,32 @@ export default function List() {
     <Card>
       <CardHeader className="d-flex justify-content-between align-items-center">
         <h5 className="card-title">Master Crop</h5>
-        <Button
-          onClick={addCropType}
-          color="primary"
-          className="btn-label"
-          size="sm"
-        >
-          <i className="ri-add-fill label-icon align-middle fs-13 me-2"></i>Add
-        </Button>
+        <div className="d-flex align-items-center">
+          <div>
+            <select
+              className="form-select"
+              value={table.getState().pagination.pageSize}
+              onChange={(e) => {
+                table.setPageSize(Number(e.target.value));
+              }}
+            >
+              <option value={"5"}>5</option>
+              <option value={"10"}>10</option>
+              <option value={"20"}>20</option>
+              <option value={"50"}>50</option>
+              <option value={"100"}>100</option>
+            </select>
+          </div>
+          <Button
+            onClick={addCropType}
+            color="primary"
+            className="btn-label"
+            size="sm"
+          >
+            <i className="ri-add-fill label-icon align-middle fs-13 me-2"></i>
+            Add
+          </Button>
+        </div>
       </CardHeader>
       <CardBody>
         <div className="table-responsive">
@@ -263,7 +290,54 @@ export default function List() {
             </tbody>
           </Table>
         </div>
+        <div className="d-flex justify-content-center mt-4 mb-0">
+          <PaginationContainer
+            table={table}
+            currentPage={table.getState().pagination.pageIndex + 1}
+            size={
+              data[0] && data[0].totalCount
+                ? data[0].totalCount / table.getState().pagination.pageSize
+                : 1
+            }
+          />
+        </div>
       </CardBody>
     </Card>
+  );
+}
+
+function PaginationContainer({ size, table, currentPage }) {
+  const [totalPages, setTotalPages] = useState([]);
+
+  const generatePagination = () => {
+    const newList = [];
+    for (let x = 0; x < size; x++) {
+      newList.push(
+        <PaginationItem
+          onClick={() => table.setPageSize(x + 1)}
+          active={x + 1 === currentPage}
+        >
+          <PaginationLink> {x + 1} </PaginationLink>
+        </PaginationItem>
+      );
+    }
+    setTotalPages(newList);
+  };
+
+  useEffect(() => {
+    generatePagination();
+  }, [size, currentPage]);
+  return (
+    <Pagination className="pagination-rounded mb-0 pb-0">
+      <PaginationItem disabled>
+        {" "}
+        <PaginationLink to="#"> ← </PaginationLink>{" "}
+      </PaginationItem>
+      {totalPages}
+      <PaginationItem>
+        {" "}
+        <PaginationLink to="#"> → </PaginationLink>{" "}
+      </PaginationItem>
+    </Pagination>
   );
 }

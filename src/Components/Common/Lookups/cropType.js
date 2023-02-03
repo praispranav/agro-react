@@ -41,9 +41,9 @@ export default function LookUpCropType({ value, setSelectedRow, disabled }) {
   const [sorting, setSorting] = React.useState([]);
   const columns = useMemo(
     () => [
-      columnHelper.accessor("cropTypeId", {
+      columnHelper.accessor('serial', {
         cell: (info) => info.getValue(),
-        header: () => <span>Id</span>,
+        header: () => <span>#</span>,
         footer: (info) => info.column.id,
       }),
       columnHelper.accessor((row) => row.cropTypeName, {

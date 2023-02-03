@@ -33,10 +33,16 @@ import {
   getMasterCropDataSuccess,
 } from "./actions";
 
+function addSerialNo(data){
+  return data.map((i, index)=>({
+    ...i, serial: index + 1
+  }))
+}
+
 export function* getFarmType() {
   try {
     const response = yield call(fetchFarmType);
-    yield put(getFarmTypeDataSuccess(response.data));
+    yield put(getFarmTypeDataSuccess(addSerialNo(response.data)));
   } catch (error) {
     yield put(errorLookup(error));
     toast.error("Failed to Load Farm Type Data.", { autoClose: 4000 });
@@ -46,7 +52,7 @@ export function* getFarmType() {
 export function* getCropType() {
   try {
     const response = yield call(fetchCropType);
-    yield put(getCropTypeDataSuccess(response.data));
+    yield put(getCropTypeDataSuccess(addSerialNo(response.data)));
   } catch (error) {
     yield put(errorLookup(error));
     toast.error("Failed to Load Crop Type Data.", { autoClose: 4000 });
@@ -55,7 +61,7 @@ export function* getCropType() {
 export function* getSoilType() {
   try {
     const response = yield call(fetchSoilType);
-    yield put(getSoilTypeDataSuccess(response.data));
+    yield put(getSoilTypeDataSuccess(addSerialNo(response.data)));
   } catch (error) {
     yield put(errorLookup(error));
     console.log(error);
@@ -67,7 +73,7 @@ export function* getVarietyType() {
   try {
     const response = yield call(fetchVarietyType);
     console.log("Variety", response);
-    yield put(getVarietyTypeDataSuccess(response.data));
+    yield put(getVarietyTypeDataSuccess(addSerialNo(response.data)));
   } catch (error) {
     yield put(errorLookup(error));
     toast.error("Failed to Load Variety Type Data.", { autoClose: 4000 });
@@ -77,7 +83,7 @@ export function* getVarietyType() {
 export function* getYieldType() {
   try {
     const response = yield call(fetchYieldType);
-    yield put(getYieldTypeDataSuccess(response.data));
+    yield put(getYieldTypeDataSuccess(addSerialNo(response.data)));
   } catch (error) {
     yield put(errorLookup(error));
     toast.error("Failed to Load Yield Type Data.", { autoClose: 4000 });
@@ -87,7 +93,7 @@ export function* getYieldType() {
 export function* getIrrigation() {
   try {
     const response = yield call(fetchIrrigation);
-    yield put(getIrrigationDataSuccess(response.data));
+    yield put(getIrrigationDataSuccess(addSerialNo(response.data)));
   } catch (error) {
     yield put(errorLookup(error));
     toast.error("Failed to Load Irrigation Data.", { autoClose: 4000 });

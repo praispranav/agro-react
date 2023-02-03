@@ -1,4 +1,5 @@
 import {
+  CLEAR_FORM_MASTER_CROP,
   GET_MASTER_CROP,
   ADD_MASTER_CROP,
   EDIT_MASTER_CROP,
@@ -12,11 +13,16 @@ import {
   ADD_MASTER_CROP_FROM,
   PREV_MASTER_CROP_PAGE,
   NEXT_MASTER_CROP_PAGE,
+  ERROR_LOADING_MASTER_CROP,
+  STOP_MASTER_CROP_LOADING,
+  START_MASTER_CROP_LOADING,
+  START_MASTER_CROP_LIST_LOADING,
+  STOP_MASTER_CROP_LIST_LOADING,
 } from "./action";
 
 export const getMasterCrop = () => ({
   type: GET_MASTER_CROP,
-  payload: { displayStart: 0, displayLength: 10, SearchCropType: null },
+  payload: { displayStart: 0, displayLength: 100, SearchCropType: null },
 });
 
 export const getMasterCropPrev = (payload) => ({
@@ -75,5 +81,30 @@ export const addMasterCropForm = (payload) => ({
 
 export const closeAddEditMasterCropModal = (payload) => ({
   type: CLOSE_MASTER_CROP_MODAL,
+  payload,
+});
+
+export const startMasterCropLoading = () => ({
+  type: START_MASTER_CROP_LOADING,
+});
+
+export const stopMasterCropLoading = () => ({
+  type: STOP_MASTER_CROP_LOADING,
+});
+export const startMasterCropListLoading = () => ({
+  type: START_MASTER_CROP_LIST_LOADING,
+});
+
+export const stopMasterCropListLoading = () => ({
+  type: STOP_MASTER_CROP_LIST_LOADING,
+});
+
+export const errorMasterCropLoading = (payload) => ({
+  type: ERROR_LOADING_MASTER_CROP,
+  payload,
+});
+
+export const clearFormMasterCrop = (payload) => ({
+  type: CLEAR_FORM_MASTER_CROP,
   payload,
 });

@@ -73,7 +73,6 @@ export default function* rootSaga() {
     fork(cropTypeSaga),
     fork(masterCropSaga),
     fork(lookupSaga),
-    fork(masterCropSaga),
     fork(LayoutSaga),
     fork(AccountSaga),
     fork(AuthSaga),

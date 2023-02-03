@@ -9,6 +9,7 @@ import {
   closeAddEditMasterCropModal,
   editMasterCrop,
 } from "../../../store/master/masterCrop/actionType";
+import { Spinner } from "reactstrap";
 
 const validationSchema = yup.object().shape({
   MasterCropName: yup.string().required().min(3),
@@ -23,10 +24,20 @@ const initialValues = {
 };
 
 export default function Form() {
-  const { isEditForm, editFormData, isOpen } = useSelector((state) => ({
+  const {
+    isEditForm,
+    addLoading,
+    editLoading,
+    editFormData,
+    isOpen,
+    clearForm,
+  } = useSelector((state) => ({
+    clearForm: state.MasterCrop.clearForm,
     isEditForm: state.MasterCrop.isEditForm,
     editFormData: state.MasterCrop.editFormData,
     isOpen: state.MasterCrop.isOpen,
+    addLoading: state.MasterCrop.addLoading,
+    editLoading: state.MasterCrop.editLoading,
   }));
   const [selectedCropType, setSelectedCropType] = useState(null);
   const dispatch = useDispatch();
@@ -57,7 +68,6 @@ export default function Form() {
         console.log(values);
         dispatch(addMasterCrop(values));
       }
-      handleReset();
     },
   });
 
@@ -76,6 +86,11 @@ export default function Form() {
       setValues(initialValues);
     }
   }, [isEditForm]);
+
+  useEffect(() => {
+    handleReset();
+    setSelectedCropType(null);
+  }, [clearForm]);
 
   const toggle = () => {
     dispatch(closeAddEditMasterCropModal());
@@ -148,8 +163,21 @@ export default function Form() {
               >
                 Reset
               </button>
-              <button className="btn btn-primary ms-3" type="submit">
-                Save
+              <button
+                disabled={addLoading || editLoading}
+                className="btn btn-primary ms-3"
+                type="submit"
+              >
+                {addLoading || editLoading ? (
+                  <span className="d-flex align-items-center">
+                    <span className="flex-grow-1 me-2">Loading...</span>
+                    <Spinner size="sm" className="flex-shrink-0" role="status">
+                      Loading...
+                    </Spinner>
+                  </span>
+                ) : (
+                  <span>Save</span>
+                )}
               </button>
             </div>
           </Col>
