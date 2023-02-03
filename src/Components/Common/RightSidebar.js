@@ -190,6 +190,39 @@ const RightSidebar = (props) => {
                   <div className="col-4">
                     <div className="form-check card-radio">
                       <input
+                        id="customizer-layout02"
+                        name="data-layout"
+                        type="radio"
+                        value={layoutTypes.HORIZONTAL}
+                        checked={layoutType === layoutTypes.HORIZONTAL}
+                        onChange={(e) => {
+                          if (e.target.checked) {
+                            dispatch(changeLayout(e.target.value));
+                          }
+                        }}
+                        className="form-check-input"
+                      />
+                      <label
+                        className="form-check-label p-0 avatar-md w-100"
+                        htmlFor="customizer-layout02"
+                      >
+                        <span className="d-flex h-100 flex-column gap-1">
+                          <span className="bg-light d-flex p-1 gap-1 align-items-center">
+                            <span className="d-block p-1 bg-soft-primary rounded me-1"></span>
+                            <span className="d-block p-1 pb-0 px-2 bg-soft-primary ms-auto"></span>
+                            <span className="d-block p-1 pb-0 px-2 bg-soft-primary"></span>
+                          </span>
+                          <span className="bg-light d-block p-1"></span>
+                          <span className="bg-light d-block p-1 mt-auto"></span>
+                        </span>
+                      </label>
+                    </div>
+                    <h5 className="fs-13 text-center mt-2">Horizontal</h5>
+                  </div>
+
+                  <div className="col-4">
+                    <div className="form-check card-radio">
+                      <input
                         id="customizer-layout01"
                         name="data-layout"
                         type="radio"
@@ -226,38 +259,7 @@ const RightSidebar = (props) => {
                     </div>
                     <h5 className="fs-13 text-center mt-2">Vertical</h5>
                   </div>
-                  <div className="col-4">
-                    <div className="form-check card-radio">
-                      <input
-                        id="customizer-layout02"
-                        name="data-layout"
-                        type="radio"
-                        value={layoutTypes.HORIZONTAL}
-                        checked={layoutType === layoutTypes.HORIZONTAL}
-                        onChange={(e) => {
-                          if (e.target.checked) {
-                            dispatch(changeLayout(e.target.value));
-                          }
-                        }}
-                        className="form-check-input"
-                      />
-                      <label
-                        className="form-check-label p-0 avatar-md w-100"
-                        htmlFor="customizer-layout02"
-                      >
-                        <span className="d-flex h-100 flex-column gap-1">
-                          <span className="bg-light d-flex p-1 gap-1 align-items-center">
-                            <span className="d-block p-1 bg-soft-primary rounded me-1"></span>
-                            <span className="d-block p-1 pb-0 px-2 bg-soft-primary ms-auto"></span>
-                            <span className="d-block p-1 pb-0 px-2 bg-soft-primary"></span>
-                          </span>
-                          <span className="bg-light d-block p-1"></span>
-                          <span className="bg-light d-block p-1 mt-auto"></span>
-                        </span>
-                      </label>
-                    </div>
-                    <h5 className="fs-13 text-center mt-2">Horizontal</h5>
-                  </div>
+
                   <div className="col-4">
                     <div className="form-check card-radio">
                       <input

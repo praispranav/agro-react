@@ -11,10 +11,9 @@ import VerticalLayout from "./VerticalLayouts";
 import TwoColumnLayout from "./TwoColumnLayout";
 import { Container } from "reactstrap";
 import HorizontalLayout from "./HorizontalLayout";
-import logoWhite from "../assets/wecall-images/logoWhite.svg"
+import logoWhite from "../assets/wecall-images/logoWhite.svg";
 
 const Sidebar = ({ layoutType }) => {
-
   useEffect(() => {
     var verticalOverlay = document.getElementsByClassName("vertical-overlay");
     if (verticalOverlay) {
@@ -26,12 +25,20 @@ const Sidebar = ({ layoutType }) => {
 
   const addEventListenerOnSmHoverMenu = () => {
     // add listener Sidebar Hover icon on change layout from setting
-    if (document.documentElement.getAttribute('data-sidebar-size') === 'sm-hover') {
-      document.documentElement.setAttribute('data-sidebar-size', 'sm-hover-active');
-    } else if (document.documentElement.getAttribute('data-sidebar-size') === 'sm-hover-active') {
-      document.documentElement.setAttribute('data-sidebar-size', 'sm-hover');
+    if (
+      document.documentElement.getAttribute("data-sidebar-size") === "sm-hover"
+    ) {
+      document.documentElement.setAttribute(
+        "data-sidebar-size",
+        "sm-hover-active"
+      );
+    } else if (
+      document.documentElement.getAttribute("data-sidebar-size") ===
+      "sm-hover-active"
+    ) {
+      document.documentElement.setAttribute("data-sidebar-size", "sm-hover");
     } else {
-      document.documentElement.setAttribute('data-sidebar-size', 'sm-hover');
+      document.documentElement.setAttribute("data-sidebar-size", "sm-hover");
     }
   };
 
@@ -65,21 +72,7 @@ const Sidebar = ({ layoutType }) => {
             <i className="ri-record-circle-line"></i>
           </button>
         </div>
-        {layoutType === "horizontal" ? (
-          <div id="scrollbar">
-            <Container fluid>
-              <div id="two-column-menu"></div>
-              <ul className="navbar-nav" id="navbar-nav">
-                <HorizontalLayout />
-              </ul>
-            </Container>
-          </div>
-        ) : layoutType === 'twocolumn' ? (
-          <React.Fragment>
-            <TwoColumnLayout layoutType={layoutType} />
-            <div className="sidebar-background"></div>
-          </React.Fragment>
-        ) : (
+        {layoutType === "vertical" ? (
           <React.Fragment>
             <SimpleBar id="scrollbar" className="h-100">
               <Container fluid>
@@ -91,6 +84,20 @@ const Sidebar = ({ layoutType }) => {
             </SimpleBar>
             <div className="sidebar-background"></div>
           </React.Fragment>
+        ) : layoutType === "twocolumn" ? (
+          <React.Fragment>
+            <TwoColumnLayout layoutType={layoutType} />
+            <div className="sidebar-background"></div>
+          </React.Fragment>
+        ) : (
+          <div id="scrollbar">
+            <Container fluid>
+              <div id="two-column-menu"></div>
+              <ul className="navbar-nav" id="navbar-nav">
+                <HorizontalLayout />
+              </ul>
+            </Container>
+          </div>
         )}
       </div>
       <div className="vertical-overlay"></div>

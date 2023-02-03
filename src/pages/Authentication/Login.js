@@ -28,7 +28,7 @@ import { useFormik } from "formik";
 import { loginUser, socialLogin, resetLoginFlag } from "../../store/actions";
 
 import withRouter from "../../Components/Common/withRouter";
-import logoWhite from "../../assets/wecall-images/logoWhite.svg";
+import logoWhite from "../../assets/agro-images/logoWhite.png";
 
 const Login = (props) => {
   const dispatch = useDispatch();
@@ -120,7 +120,7 @@ const Login = (props) => {
                 <div className="text-center mt-sm-5 mb-4 text-white-50">
                   <div>
                     <Link to="/" className="d-inline-block auth-logo">
-                      <img src={logoWhite} alt="" height="20" />
+                      <img src={logoWhite} alt="" height="80" />
                     </Link>
                   </div>
                   {/* <p className="mt-3 fs-15 fw-medium">

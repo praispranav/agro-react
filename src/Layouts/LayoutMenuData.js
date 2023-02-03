@@ -10,7 +10,7 @@ const Navdata = () => {
   const [isAccessGroup, setIsAccessGroup] = useState(false);
   const [isTasks, setIsTasks] = useState(false);
   const [isConfiguration, setIsConfiguration] = useState(false);
-  const [info, setInfo] = useState(false)
+  const [info, setInfo] = useState(false);
   // const [isTask, setIsTask] = useState(false);
 
   const [isApps, setIsApps] = useState(false);
@@ -178,23 +178,32 @@ const Navdata = () => {
           link: "/admin-dashboard",
           parentId: "dashboard",
         },
+      ],
+    },
+    {
+      id: "pages",
+      label: "Master",
+      icon: "ri-pages-line",
+      link: "/#",
+      click: function (e) {
+        e.preventDefault();
+        setIsPages(!isPages);
+        setIscurrentState("Pages");
+        updateIconSidebar(e);
+      },
+      stateVariables: isPages,
+      subItems: [
         {
-          id: "farms",
-          label: "Farms",
-          link: "/farms",
-          parentId: "dashboard",
+          id: "crop-type",
+          label: "Crop Type",
+          link: "/crop-type",
+          parentId: "pages",
         },
         {
           id: "master-crop",
           label: "Master Crop",
           link: "/master-crop",
-          parentId: "dashboard",
-        },
-        {
-          id: "crop-type",
-          label: "Crop Type",
-          link: "/crop-type",
-          parentId: "dashboard",
+          parentId: "pages",
         },
       ],
     },
